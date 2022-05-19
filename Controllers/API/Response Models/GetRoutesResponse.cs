@@ -5,7 +5,7 @@ namespace TelstarRoutePlanner.Controllers.API.Response_Models
 {
     public class GetRoutesResponse : Response
     {
-        public TelstarRoutePlanner.Extensions.RoutePlanner.Route[] routes { get; set; }
+        public List<TelstarRoutePlanner.Extensions.RoutePlanner.Route> Routes { get; set; }
 
         public string Serialize()
         {
