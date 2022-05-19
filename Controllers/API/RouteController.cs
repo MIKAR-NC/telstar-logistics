@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TelstarRoutePlanner.Controllers.API
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class RouteController : ControllerBase
     {
