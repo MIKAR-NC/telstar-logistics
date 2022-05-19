@@ -5,10 +5,10 @@ namespace TelstarRoutePlanner.Extensions.RoutePlanner
 {
     public class Route
     {
-        private List<Segment> segments;
-        public Route(List<Segment> segments)
+        private List<City> cities;
+        public Route(List<City> cities)
         {
-            this.segments = segments;
+            this.cities = cities;
         }
     }
 }
