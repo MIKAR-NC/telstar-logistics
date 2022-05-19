@@ -1,9 +1,14 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Route = TelstarRoutePlanner.Extensions.RoutePlanner.Route;
 
 namespace TelstarRoutePlanner.Models
 {
     public class Booking
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string ID { get; set; }
 
         public string UserID { get; set; }
@@ -13,21 +18,34 @@ namespace TelstarRoutePlanner.Models
         public TransportRoute Route { get; set; }
     }
 
-    public class TransportRoute : Extensions.RoutePlanner.Route
+    public class TransportRoute : Route
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string ID { get; set; }
-        public double TotalTime { get; set; }
-        public double TotalPrice { get; set; }
+        public double TotalCost { get; set; }
 
         public ICollection<TransportRouteCity> Cities { get; set; }
+        public TransportRoute(List<City> cities, double time) : base(cities, time)
+        {
+            Cities = cities.Select(x => new TransportRouteCity(ID, x.ID, cities.IndexOf(x))).ToList();
+            TotalCost = 3 * (time / 4);
+        }
+
         public TransportRoute(List<City> cities) : base(cities)
         {
-            foreach (var city in cities) Cities.Add(new TransportRouteCity(ID, city.ID, cities.IndexOf(city)));
+            Cities = cities.Select(x => new TransportRouteCity(ID, x.ID, cities.IndexOf(x))).ToList();
         }
+
+        public TransportRoute() : base() { }
     }
 
     public class TransportRouteCity
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public string ID { get; set; }
+
         public string RouteID { get; set; }
         public TransportRoute Route { get; set; }
 
@@ -35,6 +53,8 @@ namespace TelstarRoutePlanner.Models
         public City City { get; set; }
 
         public int IndexOnRoute { get; set; }
+
+        public TransportRouteCity() { }
 
         public TransportRouteCity(string routeId, string cityId, int idx)
         {

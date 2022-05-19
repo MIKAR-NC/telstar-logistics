@@ -65,7 +65,7 @@ namespace TelstarRoutePlanner.Controllers.Service
 
                 }
 
-                route.setTime(totalCost);
+                route.TotalTime = totalCost;
             };
 
             return routes;

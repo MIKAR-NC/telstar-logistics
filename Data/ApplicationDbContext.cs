@@ -14,6 +14,9 @@ namespace TelstarRoutePlanner.Data
         private DbSet<City> Cities { get; set; }
         private DbSet<Segment> Segments { get; set; }
         private DbSet<Carrier> Carriers { get; set; }
+        private DbSet<Booking> Bookings { get; set; }
+        private DbSet<TransportRoute> Routes { get; set; }
+        private DbSet<TransportRouteCity> RouteCityAllocations { get; set; }
 
         public IQueryable<City> GetCities()
         {
@@ -28,6 +31,24 @@ namespace TelstarRoutePlanner.Data
         public IQueryable<Carrier> GetCarriers()
         {
             return Carriers.Include(x => x.Segments);
+        }
+
+        public IQueryable<Booking> GetBookings(string UserID)
+        {
+            return Bookings.Where(x => x.UserID == UserID).Include(x => x.Route).ThenInclude(x => x.Cities).ThenInclude(x => x.City);
+        }
+
+        public bool AddBookingToDb(Booking booking, TransportRoute route, List<City> cities)
+        {
+            Routes.Add(route);
+            RouteCityAllocations.AddRange(cities.Select(x => new TransportRouteCity(route.ID, x.ID, cities.IndexOf(x))));
+
+            booking.RouteID = route.ID;
+            Bookings.Add(booking);
+
+            SaveChanges();
+
+            return Bookings.Any(x => x.ID == booking.ID);
         }
     }
 }
