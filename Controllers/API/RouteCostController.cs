@@ -7,13 +7,12 @@ using TelstarRoutePlanner.Controllers.API.Response_Models;
 namespace TelstarRoutePlanner.Controllers.API
 {
     [ApiController]
-    //[Authorize]
-    public class RouteController : ControllerBase
+    public class RouteCostController : ControllerBase
     {
-        [Route("api/routes")]
-        public string GetRoutes([FromBody] GetRoutesRequest getRoutesRequest)
+        [Route("api/segments")]
+        public string GetCost(GetCostRequest getCostRequest)
         {
-            return new GetRoutesResponse().Serialize();
+            return new GetCostResponse(9.2, 8, 200).Serialize();
         }
     }
 }
