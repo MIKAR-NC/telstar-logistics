@@ -9869,24 +9869,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\thsla\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\mikar\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\thsla\\Source\\Repos\\telstar-logistics\\TelstarRoutePlanner.csproj",
+      "projectUniqueName": "C:\\Users\\mikar\\Source\\Repos\\telstar-logistics\\TelstarRoutePlanner.csproj",
       "projectName": "TelstarRoutePlanner",
-      "projectPath": "C:\\Users\\thsla\\Source\\Repos\\telstar-logistics\\TelstarRoutePlanner.csproj",
-      "packagesPath": "C:\\Users\\thsla\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\thsla\\Source\\Repos\\telstar-logistics\\obj\\",
+      "projectPath": "C:\\Users\\mikar\\Source\\Repos\\telstar-logistics\\TelstarRoutePlanner.csproj",
+      "packagesPath": "C:\\Users\\mikar\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mikar\\Source\\Repos\\telstar-logistics\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\thsla\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\mikar\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9955,7 +9950,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }
