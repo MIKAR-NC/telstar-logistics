@@ -21,7 +21,7 @@ namespace TelstarRoutePlanner.Extensions.RoutePlanner
 
 
         // show all simple paths from s to t - use DFS
-        public void AllPaths(City from, City to)
+        public List<Route> AllPaths(City from, City to)
         {
             this.routes = new List<Route>();
 
@@ -31,6 +31,8 @@ namespace TelstarRoutePlanner.Extensions.RoutePlanner
 
             this.currentPath = new Stack<Segment>();
             this.dfs(from, to);
+
+            return this.routes;
         }
 
 
