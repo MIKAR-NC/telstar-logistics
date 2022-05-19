@@ -3,9 +3,14 @@ using TelstarRoutePlanner.Models;
 
 namespace TelstarRoutePlanner.Controllers.API.Response_Models
 {
-    public class GetRoutesResponse : Response
+    public class GetRoutesResponse : IResponse
     {
-        public TelstarRoutePlanner.Extensions.RoutePlanner.Route[] routes { get; set; }
+        public Extensions.RoutePlanner.Route[]? routes { get; set; }
+
+        public GetRoutesResponse(Route[]? routes)
+        {
+
+        }
 
         public string Serialize()
         {

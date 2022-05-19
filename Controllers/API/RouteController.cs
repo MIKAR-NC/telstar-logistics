@@ -13,7 +13,7 @@ namespace TelstarRoutePlanner.Controllers.API
         [Route("api/routes")]
         public string GetRoutes([FromBody] GetRoutesRequest getRoutesRequest)
         {
-            return new GetRoutesResponse().Serialize();
+            return new GetRoutesResponse(null).Serialize();
         }
     }
 }

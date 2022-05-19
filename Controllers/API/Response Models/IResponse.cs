@@ -1,7 +1,7 @@
 ﻿namespace TelstarRoutePlanner.Controllers.API.Response_Models
 {
-    public class SignInResponse
+    public interface IResponse
     {
-
+        public string Serialize();
     }
 }

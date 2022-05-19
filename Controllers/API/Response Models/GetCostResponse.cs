@@ -2,7 +2,7 @@
 
 namespace TelstarRoutePlanner.Controllers.API.Response_Models
 {
-    public class GetCostResponse : Response
+    public class GetCostResponse : IResponse
     {
         public double time { get; set; }
         public double cost { get; set; }
