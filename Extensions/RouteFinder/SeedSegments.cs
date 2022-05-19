@@ -44,6 +44,29 @@ namespace TelstarRoutePlanner.Extensions.RouteFinder
             if (!SegmentExists("tripoli", "guldkysten", CarrierType.Air)) { _context.Add(new Segment(null, GetCityID("tripoli"), GetCityID("guldkysten"), GetCarrierID(CarrierType.Air))); }
             if (!SegmentExists("tripoli", "darfur", CarrierType.Air)) { _context.Add(new Segment(null, GetCityID("tripoli"), GetCityID("darfur"), GetCarrierID(CarrierType.Air))); }
 
+            if (!SegmentExists("cairo", "omdurman", CarrierType.Land)) { _context.Add(new Segment(16, GetCityID("cairo"), GetCityID("omdurman"), GetCarrierID(CarrierType.Land))); }
+            if (!SegmentExists("cairo", "suakin", CarrierType.Air)) { _context.Add(new Segment(null, GetCityID("cairo"), GetCityID("suakin"), GetCarrierID(CarrierType.Sea))); }
+            if (!SegmentExists("cairo", "suakin", CarrierType.Air)) { _context.Add(new Segment(null, GetCityID("cairo"), GetCityID("suakin"), GetCarrierID(CarrierType.Air))); }
+
+            if (!SegmentExists("omdurman", "darfur", CarrierType.Land)) { _context.Add(new Segment(12, GetCityID("omdurman"), GetCityID("darfur"), GetCarrierID(CarrierType.Land))); }
+
+            if (!SegmentExists("suakin", "darfur", CarrierType.Land)) { _context.Add(new Segment(16, GetCityID("suakin"), GetCityID("darfur"), GetCarrierID(CarrierType.Land))); }
+            if (!SegmentExists("suakin", "adis abeba", CarrierType.Land)) { _context.Add(new Segment(12, GetCityID("suakin"), GetCityID("adis abeba"), GetCarrierID(CarrierType.Land))); }
+            if (!SegmentExists("suakin", "kap guardafui", CarrierType.Sea)) { _context.Add(new Segment(null, GetCityID("suakin"), GetCityID("kap guardafui"), GetCarrierID(CarrierType.Sea))); }
+            if (!SegmentExists("suakin", "darfur", CarrierType.Air)) { _context.Add(new Segment(null, GetCityID("suakin"), GetCityID("darfur"), GetCarrierID(CarrierType.Air))); }
+            if (!SegmentExists("suakin", "victoriasoeen", CarrierType.Air)) { _context.Add(new Segment(null, GetCityID("suakin"), GetCityID("victoriasoeen"), GetCarrierID(CarrierType.Air))); }
+
+            if (!SegmentExists("darfur", "wadai", CarrierType.Land, 16)) { _context.Add(new Segment(16, GetCityID("darfur"), GetCityID("wadai"), GetCarrierID(CarrierType.Land))); }
+            if (!SegmentExists("darfur", "wadai", CarrierType.Land, 32)) { _context.Add(new Segment(32, GetCityID("darfur"), GetCityID("wadai"), GetCarrierID(CarrierType.Land))); }
+            if (!SegmentExists("darfur", "slavekysten", CarrierType.Land)) { _context.Add(new Segment(28, GetCityID("darfur"), GetCityID("slavekysten"), GetCarrierID(CarrierType.Land))); }
+            if (!SegmentExists("darfur", "congo", CarrierType.Land)) { _context.Add(new Segment(24, GetCityID("darfur"), GetCityID("congo"), GetCarrierID(CarrierType.Land))); }
+            if (!SegmentExists("darfur", "bharel ghazal", CarrierType.Land)) { _context.Add(new Segment(8, GetCityID("darfur"), GetCityID("bharel ghazal"), GetCarrierID(CarrierType.Land))); }
+            if (!SegmentExists("darfur", "kabalo", CarrierType.Air)) { _context.Add(new Segment(null, GetCityID("darfur"), GetCityID("kabalo"), GetCarrierID(CarrierType.Air))); }
+
+            if (!SegmentExists("wadai", "slavekysten", CarrierType.Land)) { _context.Add(new Segment(28, GetCityID("wadai"), GetCityID("slavekysten"), GetCarrierID(CarrierType.Land))); }
+            if (!SegmentExists("wadai", "congo", CarrierType.Land)) { _context.Add(new Segment(24, GetCityID("wadai"), GetCityID("congo"), GetCarrierID(CarrierType.Land))); }
+
+
 
 
             _context.SaveChanges();
@@ -53,12 +76,12 @@ namespace TelstarRoutePlanner.Extensions.RouteFinder
 
         public string GetCityID(string name)
         {
-            return _context.GetCities().SingleOrDefault(x => x.Name == name)?.ID;
+            return _context.GetCities().SingleOrDefault(x => x.Name == name).ID;
         }
 
-        public bool SegmentExists(string cityAName, string cityBName, CarrierType carrier)
+        public bool SegmentExists(string cityAName, string cityBName, CarrierType carrier, int? cost = null)
         {
-            return _context.GetSegments().Any(x => ((x.City1.Name == cityAName && x.City2.Name == cityBName) || (x.City1.Name == cityBName && x.City2.Name == cityAName)) && x.Carrier.Type == carrier);
+            return _context.GetSegments().Any(x => ((x.City1.Name == cityAName && x.City2.Name == cityBName) || (x.City1.Name == cityBName && x.City2.Name == cityAName)) && x.Carrier.Type == carrier && (cost == null ? 1 == 1 : x.Cost == cost));
         }
 
         public string GetCarrierID(CarrierType type)
