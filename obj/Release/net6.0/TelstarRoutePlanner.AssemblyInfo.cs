@@ -11,6 +11,7 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
 [assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-TelstarRoutePlanner-F9D8A0E4-5DBA-4269-B6E0-719C372E5225")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("TelstarRoutePlanner")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
