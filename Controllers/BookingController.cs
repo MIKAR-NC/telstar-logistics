@@ -16,12 +16,11 @@ namespace TelstarRoutePlanner.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.Cities = _context.GetCities().Select(x => new SelectListItem(x.Name, x.ID)).ToList();
+            ViewBag.Cities = _context.GetCities().Select(x => new SelectListItem(x.Name, x.Name)).ToList();
             ViewBag.ShippingTypes = Enum.GetValues(typeof(PackageTypeEnum)).Cast<PackageTypeEnum>()
                 .Select(x => 
                     new SelectListItem((x.GetType().GetField(x.ToString()).GetCustomAttributes(typeof(DescriptionAttribute), false) as DescriptionAttribute[])?
                         .First().Description, ((int)x).ToString()));
-            
             return View();
         }
     }

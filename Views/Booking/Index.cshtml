@@ -7,12 +7,12 @@
     <div class="input-group flex-nowrap">
   <span class="input-group-text" id="addon-wrapping">From</span>
   
-  <select aria-label="from" asp-items="@(ViewBag.Cities)"></select>
+  <select id="from" aria-label="from" asp-items="@(ViewBag.Cities)"></select>
   
   @*<input type="text" class="form-control" placeholder="Mongo" aria-label="from" aria-describedby="addon-wrapping">*@
     <span class="input-group-text" id="addon-wrapping">To</span>
 
-    <select aria-label="to" asp-items="@(ViewBag.Cities)"></select>
+    <select id="to" aria-label="to" asp-items="@(ViewBag.Cities)"></select>
   @*<input type="text" class="form-control" placeholder="Congo" aria-label="to" aria-describedby="addon-wrapping">*@
     
 </input>
@@ -26,15 +26,10 @@
           </div>
 <div class="input-group mb-3">
   <label class="input-group-text" for="inputGroupSelect01">Options</label>
-  @*<select class="form-select" id="inputGroupSelect01">
-    <option selected>Choose...</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-  </select>*@
+
 
   <select class="form-select" id="inputGroupSelect01" asp-items="@(ViewBag.ShippingTypes)"></select>
-  <button class="btn btn-outline-secondary" type="button" id="button-addon1">Search</button>
+  <button class="btn btn-outline-secondary" type="button" id="button-addon1" onclick="performSearch()">Search</button>
 </div>
 
 <table class="table table-striped table-hover">
@@ -103,26 +98,30 @@
 
 </div>
 <script>
-function getRoutesClick() {
-    var from = $('input[aria-label: "from"]').val();
-    var to = $('input[aria-label: "to"]').val();
-    var type = $('input[]')
-    getRoutes()
-}
+
+    let searchResults = []
+
+    function performSearch() {
+        const from = $("#from").val();
+        const to = $("#to").val();
+        const weight = $("#weight").val();
+        const type = $("#inputGroupSelect01").val();
+        searchResults = getRoutes(from, to, type, weight);
+    }
 
 
-const exampleModal = document.getElementById('exampleModal')
-exampleModal.addEventListener('show.bs.modal', event => {
-  // Button that triggered the modal
-  const button = event.relatedTarget
-  // Extract info from data-bs-* attributes
-  const recipient = button.getAttribute('data-bs-whatever')
-  // If necessary, you could initiate an AJAX request here
-  // and then do the updating in a callback.
-  //
-  // Update the modal's content.
-  const modalTitle = exampleModal.querySelector('.modal-title')
-  const modalBodyInput = exampleModal.querySelector('.modal-body input')
+    const exampleModal = document.getElementById('exampleModal')
+    exampleModal.addEventListener('show.bs.modal', event => {
+      // Button that triggered the modal
+      const button = event.relatedTarget
+      // Extract info from data-bs-* attributes
+      const recipient = button.getAttribute('data-bs-whatever')
+      // If necessary, you could initiate an AJAX request here
+      // and then do the updating in a callback.
+      //
+      // Update the modal's content.
+      const modalTitle = exampleModal.querySelector('.modal-title')
+      const modalBodyInput = exampleModal.querySelector('.modal-body input')
 
   modalTitle.textContent = `Summary`
   modalBodyInput.value = recipient
