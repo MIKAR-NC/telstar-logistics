@@ -29,8 +29,8 @@
                         </li>*@
                     </ul>
                     <select class="selectpicker" data-width="fit">
-    <option data-content='<span class="flag-icon flag-icon-us"></span> English'>English</option>
-  <option  data-content='<span class="flag-icon flag-icon-fr"></span> France'>France</option>
+    <option id="en" onclick="toggleLanguage('en')" data-content='<span class="flag-icon flag-icon-us"></span> English'>English</option>
+  <option id="fr" onclick="toggleLanguage('fr')" data-content='<span class="flag-icon flag-icon-fr"></span> French'>French</option>
 </select>
                     <partial name="_LoginPartial" />
                 </div>
@@ -45,7 +45,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - Telstar Logistics - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2022 - Telstar Logistics - <a id="privacy" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -55,7 +55,33 @@
 </body>
 </html>
 <script>
-toggleLanguage function(){
- //TOGGLE HERE
-});
+    function toggleLanguage(lang) {
+        document.cookie=`lang=${lang}`
+}
+
+function getLangCookie() {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${"lang"}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+var checkCookie = function() {
+
+    return function() {
+        var language = getLangCookie();
+        let privText = "Privacy"
+        let engText = "English"
+        let frText = "French"
+        if (language === "fr") {
+            privText = "Confidentialité"
+            engText = "Anglais"
+            frText = "Français"
+        }
+        $("#privacy").text(privText)
+        $("#en").text(engText)
+        $("#fr").text(frText)
+    };
+}();
+
+window.setInterval(checkCookie, 100); // run every 100 ms
 </script>

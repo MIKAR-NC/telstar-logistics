@@ -3,7 +3,30 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome to the Telstar Logistics Shipping Portal</h1>
+    <h1 id="title" class="display-4">Welcome to the Telstar Logistics Shipping Portal</h1>
 @*    <p>Go to</p>
     <button>Sign in</button>*@
 </div>
+
+
+<script>
+function getLangCookie() {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${"lang"}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+var checkCookie = function() {
+
+    return function() {
+        var language = getLangCookie();
+        let titleText = "Welcome to the Telstar Logistics Shipping Portal"
+        if (language === "fr") {
+            titleText = "Bienvenue sur le portail d'expédition Telstar Logistics"
+        }
+        $("#title").text(titleText)
+    };
+}();
+
+window.setInterval(checkCookie, 100); // run every 100 ms
+</script>
