@@ -6,16 +6,10 @@ namespace TelstarRoutePlanner.Extensions.RouteFinder
     public class SeedSegments
     {
         private readonly ApplicationDbContext _context;
-        private List<City> cities;
-        private List<Segment> segments;
-        private List<Carrier> carriers;
 
         public SeedSegments(ApplicationDbContext context)
         {
             _context = context;
-            cities = context.GetCities().ToList();
-            segments = context.GetSegments().ToList();
-            carriers = context.GetCarriers().ToList();
         }
 
         public void AddSegments()
@@ -45,7 +39,7 @@ namespace TelstarRoutePlanner.Extensions.RouteFinder
             if (!SegmentExists("tripoli", "darfur", CarrierType.Air)) { _context.Add(new Segment(null, GetCityID("tripoli"), GetCityID("darfur"), GetCarrierID(CarrierType.Air))); }
 
             if (!SegmentExists("cairo", "omdurman", CarrierType.Land)) { _context.Add(new Segment(16, GetCityID("cairo"), GetCityID("omdurman"), GetCarrierID(CarrierType.Land))); }
-            if (!SegmentExists("cairo", "suakin", CarrierType.Air)) { _context.Add(new Segment(null, GetCityID("cairo"), GetCityID("suakin"), GetCarrierID(CarrierType.Sea))); }
+            if (!SegmentExists("cairo", "suakin", CarrierType.Sea)) { _context.Add(new Segment(null, GetCityID("cairo"), GetCityID("suakin"), GetCarrierID(CarrierType.Sea))); }
             if (!SegmentExists("cairo", "suakin", CarrierType.Air)) { _context.Add(new Segment(null, GetCityID("cairo"), GetCityID("suakin"), GetCarrierID(CarrierType.Air))); }
 
             if (!SegmentExists("omdurman", "darfur", CarrierType.Land)) { _context.Add(new Segment(12, GetCityID("omdurman"), GetCityID("darfur"), GetCarrierID(CarrierType.Land))); }
@@ -66,7 +60,32 @@ namespace TelstarRoutePlanner.Extensions.RouteFinder
             if (!SegmentExists("wadai", "slavekysten", CarrierType.Land)) { _context.Add(new Segment(28, GetCityID("wadai"), GetCityID("slavekysten"), GetCarrierID(CarrierType.Land))); }
             if (!SegmentExists("wadai", "congo", CarrierType.Land)) { _context.Add(new Segment(24, GetCityID("wadai"), GetCityID("congo"), GetCarrierID(CarrierType.Land))); }
 
+            if (!SegmentExists("dakar", "sierra leone", CarrierType.Land)) { _context.Add(new Segment(16, GetCityID("dakar"), GetCityID("sierra leone"), GetCarrierID(CarrierType.Land))); }
+            if (!SegmentExists("dakar", "sierra leone", CarrierType.Sea)) { _context.Add(new Segment(null, GetCityID("dakar"), GetCityID("sierra leone"), GetCarrierID(CarrierType.Sea))); }
+            if (!SegmentExists("dakar", "st. helena", CarrierType.Sea)) { _context.Add(new Segment(null, GetCityID("dakar"), GetCityID("sierra leone"), GetCarrierID(CarrierType.Sea))); }
 
+            if (!SegmentExists("sierra leone", "st. helena", CarrierType.Sea)) { _context.Add(new Segment(null, GetCityID("sierra leone"), GetCityID("st. helena"), GetCarrierID(CarrierType.Sea))); }
+            if (!SegmentExists("sierra leone", "guldkysten", CarrierType.Sea)) { _context.Add(new Segment(null, GetCityID("sierra leone"), GetCityID("guldkysten"), GetCarrierID(CarrierType.Sea))); }
+            if (!SegmentExists("sierra leone", "timbuktu", CarrierType.Land)) { _context.Add(new Segment(20, GetCityID("sierra leone"), GetCityID("timbuktu"), GetCarrierID(CarrierType.Land))); }
+            if (!SegmentExists("sierra leone", "guldkysten", CarrierType.Land)) { _context.Add(new Segment(20, GetCityID("sierra leone"), GetCityID("guldkysten"), GetCarrierID(CarrierType.Land))); }
+            if (!SegmentExists("sierra leone", "st. helena", CarrierType.Air)) { _context.Add(new Segment(null, GetCityID("sierra leone"), GetCityID("st. helena"), GetCarrierID(CarrierType.Air))); }
+
+            if (!SegmentExists("timbuktu", "guldkysten", CarrierType.Land)) { _context.Add(new Segment(16, GetCityID("timbuktu"), GetCityID("guldkysten"), GetCarrierID(CarrierType.Land))); }
+            if (!SegmentExists("timbuktu", "slavekysten", CarrierType.Land)) { _context.Add(new Segment(20, GetCityID("timbuktu"), GetCityID("slavekysten"), GetCarrierID(CarrierType.Land))); }
+
+            if (!SegmentExists("st. helena", "hvalbugten", CarrierType.Sea)) { _context.Add(new Segment(null, GetCityID("st. helena"), GetCityID("hvalbugten"), GetCarrierID(CarrierType.Sea))); }
+            if (!SegmentExists("st. helena", "kapstaden", CarrierType.Sea)) { _context.Add(new Segment(null, GetCityID("st. helena"), GetCityID("kapstaden"), GetCarrierID(CarrierType.Sea))); }
+            if (!SegmentExists("st. helena", "kapstaden", CarrierType.Air)) { _context.Add(new Segment(null, GetCityID("st. helena"), GetCityID("kapstaden"), GetCarrierID(CarrierType.Air))); }
+
+            if (!SegmentExists("guldkysten", "slavekysten", CarrierType.Sea)) { _context.Add(new Segment(null, GetCityID("guldkysten"), GetCityID("slavekysten"), GetCarrierID(CarrierType.Sea))); }
+            if (!SegmentExists("guldkysten", "hvalbugten", CarrierType.Sea)) { _context.Add(new Segment(null, GetCityID("guldkysten"), GetCityID("hvalbugten"), GetCarrierID(CarrierType.Sea))); }
+            if (!SegmentExists("guldkysten", "luanda", CarrierType.Air)) { _context.Add(new Segment(null, GetCityID("guldkysten"), GetCityID("luanda"), GetCarrierID(CarrierType.Air))); }
+            if (!SegmentExists("guldkysten", "hvalbugten", CarrierType.Air)) { _context.Add(new Segment(null, GetCityID("guldkysten"), GetCityID("hvalbugten"), GetCarrierID(CarrierType.Air))); }
+
+            if (!SegmentExists("slavekysten", "congo", CarrierType.Land)) { _context.Add(new Segment(20, GetCityID("slavekysten"), GetCityID("congo"), GetCarrierID(CarrierType.Land))); }
+            if (!SegmentExists("slavekysten", "hvalbugten", CarrierType.Sea)) { _context.Add(new Segment(null, GetCityID("slavekysten"), GetCityID("hvalbugten"), GetCarrierID(CarrierType.Sea))); }
+
+            if (!SegmentExists("bahrel ghazal", "victoriasoeen", CarrierType.Land)) { _context.Add(new Segment(8, GetCityID("bahrel ghazal"), GetCityID("victoriasoeen"), GetCarrierID(CarrierType.Land))); }
 
 
             _context.SaveChanges();
