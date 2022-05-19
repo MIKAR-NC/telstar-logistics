@@ -4,7 +4,7 @@
 
 namespace TelstarRoutePlanner.Data.Migrations
 {
-    public partial class AddedCities_Segments_carriers : Migration
+    public partial class AddedCityCarrierSegmentTables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -56,16 +56,14 @@ namespace TelstarRoutePlanner.Data.Migrations
                         column: x => x.City1ID,
                         principalTable: "Cities",
                         principalColumn: "ID",
-                        //onDelete: ReferentialAction.Cascade);
                         onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Segments_Cities_City2ID",
                         column: x => x.City2ID,
                         principalTable: "Cities",
                         principalColumn: "ID",
-                        //onDelete: ReferentialAction.Cascade);
                         onDelete: ReferentialAction.NoAction);
-        });
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Segments_CarrierID",

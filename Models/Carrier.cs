@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TelstarRoutePlanner.Models
 {
@@ -12,6 +13,7 @@ namespace TelstarRoutePlanner.Models
     public class Carrier
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string ID { get; set; }
 
         public CarrierType Type { get; set; }
