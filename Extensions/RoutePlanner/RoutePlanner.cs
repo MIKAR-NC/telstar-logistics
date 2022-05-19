@@ -7,7 +7,9 @@ namespace TelstarRoutePlanner.Extensions.RoutePlanner
     {
         private List<Route> routes;
         private List<City> onPath;
-        private Stack<Segment> currentPath;
+        private readonly List<Segment> _segments;
+        private readonly List<City> _cities;
+        private Stack<City> currentPath;
         private int numberOfPaths;
 
         private int BAIL_EARLY_VALUE = 10;
@@ -17,6 +19,8 @@ namespace TelstarRoutePlanner.Extensions.RoutePlanner
         public RoutePlanner(ApplicationDbContext context)
         {
             _context = context;
+            _segments = _context.GetSegments().ToList();
+            _cities = _context.GetCities().ToList();
         }
 
 
@@ -29,7 +33,7 @@ namespace TelstarRoutePlanner.Extensions.RoutePlanner
             this.onPath.Add(from);
 
 
-            this.currentPath = new Stack<Segment>();
+            this.currentPath = new Stack<City>();
             this.dfs(from, to);
 
             return this.routes;
@@ -38,8 +42,7 @@ namespace TelstarRoutePlanner.Extensions.RoutePlanner
 
         private void dfs(City from, City to)
         {
-            Segment connectionSegment = _context.GetSegments().Where(segment => segment.City1ID == from.ID || segment.City2ID == to.ID).Single();
-            this.currentPath.Push(connectionSegment);
+            this.currentPath.Push(from);
 
             this.onPath.Add(from);
 
@@ -50,18 +53,19 @@ namespace TelstarRoutePlanner.Extensions.RoutePlanner
             }
             else // consider all neighbors that would continue path with repeating a node
             {
-                var segments = _context.GetSegments().Where(x => x.City1ID == from.ID || x.City2ID == from.ID);
+                var segments = _segments.Where(x => x.City1ID == from.ID || x.City2ID == from.ID);
 
-                var adjacentCitites = _context.GetCities().Where(x => segments.Any(y => y.City1ID == x.ID || y.City2ID == x.ID) && x.ID != from.ID);
-                foreach (var city in adjacentCitites)
+                foreach (var city in _cities)
                 {
+                    if (!segments.Any(x => city.ID == x.City1ID || city.ID == x.City2ID) || city.ID == from.ID) continue;
+
                     if (!onPath.Contains(city) && this.numberOfPaths < this.BAIL_EARLY_VALUE)
                     {
-                        dfs(from, to);
+                        dfs(city, to);
                     }
                 }
             }
-            
+
             this.currentPath.Pop();
             this.onPath.Remove(from);
         }
@@ -76,9 +80,9 @@ namespace TelstarRoutePlanner.Extensions.RoutePlanner
         // this implementation just prints the path to standard output
         private void processCurrentRoute()
         {
-            Stack<Segment> reverse = new Stack<Segment>();
-            foreach (var segment in this.currentPath)
-                reverse.Push(segment);
+            Stack<City> reverse = new Stack<City>();
+            foreach (var city in this.currentPath)
+                reverse.Push(city);
 
             this.routes.Add(new Route(reverse.ToList()));
         }
