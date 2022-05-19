@@ -4,14 +4,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TelstarRoutePlanner.Controllers.API
 {
-    [Route("api/[controller]")]
     [ApiController]
-    public class RouteController : ControllerBase
+    [Authorize]
+    public class BookingController : ControllerBase
     {
-        [AllowAnonymous]
-        public IActionResult GetRoute()
+        [Route("api/booking")]
+        public IActionResult Book()
         {
-            return Ok("API test succeeded");
+            return Ok(" INTERNAL API test succeeded");
         }
     }
 }
