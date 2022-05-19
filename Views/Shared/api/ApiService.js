@@ -30,5 +30,6 @@ function getRoutes(from, to, shipmentType, weight) {
                 response = JSON.parse(request.responseText);
         }
     };
+    return "my json structure"
     return response;
 }
