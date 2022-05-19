@@ -1,0 +1,9 @@
+C:\Users\thsla\Source\Repos\telstar-logistics\obj\Release\net6.0\TelstarRoutePlanner.csproj.AssemblyReference.cache
+C:\Users\thsla\Source\Repos\telstar-logistics\obj\Release\net6.0\TelstarRoutePlanner.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\thsla\Source\Repos\telstar-logistics\obj\Release\net6.0\TelstarRoutePlanner.AssemblyInfoInputs.cache
+C:\Users\thsla\Source\Repos\telstar-logistics\obj\Release\net6.0\TelstarRoutePlanner.AssemblyInfo.cs
+C:\Users\thsla\Source\Repos\telstar-logistics\obj\Release\net6.0\TelstarRoutePlanner.csproj.CoreCompileInputs.cache
+C:\Users\thsla\Source\Repos\telstar-logistics\obj\Release\net6.0\TelstarRoutePlanner.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\thsla\Source\Repos\telstar-logistics\obj\Release\net6.0\TelstarRoutePlanner.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\thsla\Source\Repos\telstar-logistics\obj\Release\net6.0\TelstarRoutePlanner.RazorAssemblyInfo.cache
+C:\Users\thsla\Source\Repos\telstar-logistics\obj\Release\net6.0\TelstarRoutePlanner.RazorAssemblyInfo.cs

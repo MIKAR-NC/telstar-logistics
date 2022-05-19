@@ -11,7 +11,7 @@ namespace TelstarRoutePlanner.Controllers.API
         [AllowAnonymous]
         public IActionResult GetRoute()
         {
-            return Ok("API test succeeded")
+            return Ok("API test succeeded");
         }
     }
 }

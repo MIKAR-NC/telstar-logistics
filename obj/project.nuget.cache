@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Gt4+Ezubr4CMZMW7xnMKt5PrGlKlsGW6sr5Ari5Q+f5fMzNZQ0skQKRmdECj7VkmX4EFbKHOZnpm0SnfXcKxcw==",
+  "dgSpecHash": "0TLS+yjlcXzH5tOp5D32tbWk3RIFJKITMQQqxTMT7bdLIvgveCcHf9hfGJfeKJHTH+aDA6hxoM5rsJdih1KGAA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\thsla\\source\\repos\\TelstarRoutePlanner\\TelstarRoutePlanner.csproj",
+  "projectFilePath": "C:\\Users\\thsla\\Source\\Repos\\telstar-logistics\\TelstarRoutePlanner.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\thsla\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\thsla\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.5\\microsoft.aspnetcore.cryptography.internal.6.0.5.nupkg.sha512",
