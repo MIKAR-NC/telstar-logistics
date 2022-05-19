@@ -28,6 +28,10 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>*@
                     </ul>
+                    <select class="selectpicker" data-width="fit">
+    <option data-content='<span class="flag-icon flag-icon-us"></span> English'>English</option>
+  <option  data-content='<span class="flag-icon flag-icon-fr"></span> France'>France</option>
+</select>
                     <partial name="_LoginPartial" />
                 </div>
             </div>
@@ -50,3 +54,8 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+<script>
+toggleLanguage function(){
+ //TOGGLE HERE
+});
+</script>
