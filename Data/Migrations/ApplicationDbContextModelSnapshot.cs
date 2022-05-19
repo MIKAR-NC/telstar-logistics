@@ -227,6 +227,7 @@ namespace TelstarRoutePlanner.Data.Migrations
             modelBuilder.Entity("TelstarRoutePlanner.Models.Carrier", b =>
                 {
                     b.Property<string>("ID")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("Type")
@@ -240,6 +241,7 @@ namespace TelstarRoutePlanner.Data.Migrations
             modelBuilder.Entity("TelstarRoutePlanner.Models.City", b =>
                 {
                     b.Property<string>("ID")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
@@ -254,6 +256,7 @@ namespace TelstarRoutePlanner.Data.Migrations
             modelBuilder.Entity("TelstarRoutePlanner.Models.Segment", b =>
                 {
                     b.Property<string>("ID")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CarrierID")
