@@ -19,11 +19,7 @@ namespace TelstarRoutePlanner.Controllers.API
         private Service.Service service { get; set; }
         public RouteController(ApplicationDbContext context)
         {
-<<<<<<< HEAD
-            return new GetRoutesResponse(null).Serialize();
-=======
             service = Service.Service.GetInstance(context);
->>>>>>> origin/Development
         }
 
         [Route("api/routes")]
