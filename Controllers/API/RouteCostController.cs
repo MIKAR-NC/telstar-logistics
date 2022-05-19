@@ -2,17 +2,17 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TelstarRoutePlanner.Controllers.API.Request_Models;
+using TelstarRoutePlanner.Controllers.API.Response_Models;
 
 namespace TelstarRoutePlanner.Controllers.API
 {
     [ApiController]
-    //[Authorize]
-    public class AccountController : ControllerBase
+    public class RouteCostController : ControllerBase
     {
-        [Route("api/login")]
-        public IActionResult SignIn(SignInRequest signInRequest)
+        [Route("api/segments")]
+        public string GetCost(GetCostRequest getCostRequest)
         {
-            return Ok(" INTERNAL API test succeeded");
+            return new GetCostResponse(9.2, 8, 200).Serialize();
         }
     }
 }
