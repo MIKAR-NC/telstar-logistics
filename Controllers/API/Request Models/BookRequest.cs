@@ -13,6 +13,14 @@
             this.to = to;
             this.time = time;
             this.cost = cost;
+
+            Validate();
+        }
+
+        public void Validate()
+        {
+            RequestValidator.ValidateFrom(from);
+            RequestValidator.ValidateTo(to);
         }
     }
 }
