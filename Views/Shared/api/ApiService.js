@@ -19,7 +19,7 @@
 
 function getRoutes(from, to, shipmentType, weight) {
     const request = new XMLHttpRequest();
-    const url = `/API/1/routes/?From=${from}&To=${to}&Type=${shipmentType.numericalValue}&Weight=${weight}`;
+    const url = `/api/1/routes/?from=${from}&to=${to}&type=${shipmentType.numericalValue}&weight=${weight}`;
     let response = {}
 
     request.open("GET", url, false);
