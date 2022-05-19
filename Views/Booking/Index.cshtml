@@ -19,7 +19,10 @@
 </div>
     <div class="mb-2 pt-3">
 @*            <label for="customRange1" class="form-label">Max: 40 kg</label>
-*@            <input type="range" class="form-range" id="customRange1">
+*@            
+<input id="weight" type="range" name="rangeInput" min="0" max="40" onchange="updateTextInput(this.value);">
+<input type="text" id="textInput" value="">KG</input>
+
           </div>
 <div class="input-group mb-3">
   <label class="input-group-text" for="inputGroupSelect01">Options</label>
@@ -124,4 +127,8 @@ exampleModal.addEventListener('show.bs.modal', event => {
   modalTitle.textContent = `Summary`
   modalBodyInput.value = recipient
 })
+
+function updateTextInput(val) {
+          document.getElementById('textInput').value=val; 
+        }
 </script>
