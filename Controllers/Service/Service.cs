@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using TelstarRoutePlanner.Controllers.API.Enums;
 using TelstarRoutePlanner.Data;
 using TelstarRoutePlanner.Extensions.RoutePlanner;
 using TelstarRoutePlanner.Models;
@@ -34,7 +35,7 @@ namespace TelstarRoutePlanner.Controllers.Service
             _cities = _context.GetCities().ToList();
         }
 
-        public List<Route> GetRoutes(string from, string to, int type)
+        public List<Route> GetRoutes(string from, string to, ParcelType type)
         {
             City cityA = _cities.Where(city => city.Name == from).Single();
             City cityB = _cities.Where(city => city.Name == to).Single();
@@ -69,6 +70,13 @@ namespace TelstarRoutePlanner.Controllers.Service
             };
 
             return routes;
+        }
+
+        public Route GetRoute(string from, string to, ParcelType type)
+        {
+            List<Route> routes = GetRoutes(from, to, type);
+            Route route = routes.OrderBy(x => x.getTime()).FirstOrDefault();
+            return route;
         }
     }
 }

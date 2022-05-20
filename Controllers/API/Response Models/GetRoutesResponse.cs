@@ -1,20 +1,22 @@
-﻿using System.Text.Json;
+﻿using Newtonsoft.Json;
 using TelstarRoutePlanner.Models;
+using Route = TelstarRoutePlanner.Extensions.RoutePlanner.Route;
 
 namespace TelstarRoutePlanner.Controllers.API.Response_Models
 {
     public class GetRoutesResponse : IResponse
     {
-        public Extensions.RoutePlanner.Route[]? routes { get; set; }
+        public Route[]? routes { get; set; }
 
-        public GetRoutesResponse(Route[]? routes)
+        public GetRoutesResponse(List<Route> routes)
         {
-
+            this.routes = routes.ToArray();
         }
 
         public string Serialize()
         {
-            return JsonSerializer.Serialize(this);
+            var json = JsonConvert.SerializeObject(this.routes);
+            return json;
         }
     }
 }
