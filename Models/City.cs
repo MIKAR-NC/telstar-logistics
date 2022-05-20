@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace TelstarRoutePlanner.Models
 {
@@ -11,6 +12,12 @@ namespace TelstarRoutePlanner.Models
 
         public string Name { get; set; }
 
+        public string Serialize()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
+
         //public virtual ICollection<Segment>? Segments { get; set; }
     }
+
 }

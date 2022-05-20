@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using TelstarRoutePlanner.Extensions;
 using Route = TelstarRoutePlanner.Extensions.RoutePlanner.Route;
 
 namespace TelstarRoutePlanner.Models
@@ -17,8 +16,6 @@ namespace TelstarRoutePlanner.Models
 
         public string RouteID { get; set; }
         public TransportRoute Route { get; set; }
-
-        public PackageTypeEnum Type { get; set; }
     }
 
     public class TransportRoute : Route

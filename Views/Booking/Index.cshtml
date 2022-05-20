@@ -5,11 +5,11 @@
 <div class="text-center">
     <h1 class="display-4">Telstar Logistics</h1>
     <div class="input-group ">
-  <span class="input-group-text" id="addon-wrapping">From</span>
+  <span id="fromLabel" class="input-group-text" id="addon-wrapping">From</span>
   
   <select id="from" aria-label="from" asp-items="@(ViewBag.Cities)"></select>
 
-    <span class="input-group-text" id="addon-wrapping">To</span>
+    <span id="toLabel"class="input-group-text" id="addon-wrapping">To</span>
 
     <select id="to" aria-label="to" asp-items="@(ViewBag.Cities)"></select>
    
@@ -17,25 +17,24 @@
 
 </div>
  <div class="mb-3 pt-3 input-group">
-<label for="customRange1" class="form-label">Weight (KG):</label>        
+<label id="weightlabel" for="customRange1" class="form-label">Weight (KG):</label>        
 <input id="weight" type="number" name="weight">
  </div>
 <div class="input-group mb-3">
-  <label class="input-group-text" for="inputGroupSelect01">Options</label>
+  <label id="optionslabel" class="input-group-text" for="inputGroupSelect01">Options</label>
 
 
   <select class="form-select" id="inputGroupSelect01" asp-items="@(ViewBag.ShippingTypes)"></select>
-  <button class="btn btn-outline-secondary" type="button" id="button-addon1" onclick="performSearch()">Search</button>
+  <button id="searchbutton" class="btn btn-outline-secondary" type="button" id="button-addon1" onclick="performSearch()">Search</button>
 </div>
 
 <table class="table table-striped table-hover">
   <thead>
     <tr>
-      <th scope="col">From</th>
-      <th scope="col">To</th>
-      <th scope="col">Route</th>
-      <th scope="col">Time</th>
-      <th scope="col">Cost</th>
+      <th id="fromhead" scope="col">From</th>
+      <th id="tohead" scope="col">To</th>
+      <th id="timehead" scope="col">Time</th>
+      <th id="costhead" scope="col">Cost</th>
     </tr>
   </thead>
   <tbody id="resultBody">
@@ -71,7 +70,6 @@
 </div>
 
 </div>
-
 <script>
 
     function performSearch() {
@@ -117,9 +115,9 @@
 
     function getRoutes(from, to, shipmentType, weight) {
         const request = new XMLHttpRequest();
-        const url = `/Booking/GetRoutes?from=${from}&to=${to}&type=${shipmentType}&weight=${weight}`;
+        const url = `/api/1/routes/?from=${from}&to=${to}&type=${shipmentType}&weight=${weight}`;
         let response = {}
-        
+
         request.open("GET", url, false);
         request.setRequestHeader("Content-Type", "application/json");
         request.onreadystatechange = function () {
@@ -130,8 +128,7 @@
         };
         // return response;
         //TODO - REMOVE THE BELOW LINE WHEN THE ENDPOINT HAS BEEN IMPLEMENTED IN THE BACKEND
-        //return [{ "from": from, "to": to, "time": "26", "cost": "500" }, { "from": from, "to": to, "time": "55", "cost": "300" }, { "from": from, "to": to, "time": "88", "cost": "200" }];
-        return response;
+        return [{ "from": from, "to": to, "time": "26", "cost": "500" }, { "from": from, "to": to, "time": "55", "cost": "300" }, { "from": from, "to": to, "time": "88", "cost": "200" }];
     }
 
     function book(from, to, time, cost) {
@@ -149,4 +146,44 @@
         };
         return success;
     }
+
+    function getLangCookie() {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${"lang"}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+var checkCookie = function() {
+
+    return function() {
+        var language = getLangCookie();
+        let weighttext = "Weight (kg)";
+        let totext = "To";
+        let fromtext = "From";
+        let optionsText = "Options";
+        let searchText = "Search"
+        let costText = "Cost";
+        let timeText = "Time"
+        if (language === "fr") {
+            weighttext = "Masse (kg)";
+            totext = "Pour";
+            fromtext = "Depuis";
+            optionsText = "Choix";
+            searchText = "Recherche"
+            costText = "Coût";
+            timeText = "Temps"
+        }
+        $("#weightlabel").text(weighttext)
+        $("#toLabel").text(totext)
+        $("#fromLabel").text(fromtext)
+        $("#optionslabel").text(optionsText)
+        $("#searchbutton").text(searchText)
+        $("#fromhead").text(fromtext)
+        $("#tohead").text(totext)
+        $("#costhead").text(costText)
+        $("#timehead").text(timeText)
+    };
+}();
+
+window.setInterval(checkCookie, 100); // run every 100 ms
 </script>

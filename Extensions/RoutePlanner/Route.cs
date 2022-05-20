@@ -1,4 +1,5 @@
-﻿using TelstarRoutePlanner.Data;
+﻿using Newtonsoft.Json;
+using TelstarRoutePlanner.Data;
 using TelstarRoutePlanner.Models;
 
 namespace TelstarRoutePlanner.Extensions.RoutePlanner
@@ -25,6 +26,22 @@ namespace TelstarRoutePlanner.Extensions.RoutePlanner
         public List<City> GetCities()
         {
             return cities;
+        }
+
+        public void setCost(int cost)
+        {
+            _cost = cost;
+        }
+
+        public int getCost()
+        {
+            return _cost;
+        }
+
+        public string Serialize()
+        {
+            var json = JsonConvert.SerializeObject(this);
+            return json;
         }
     }
 }
