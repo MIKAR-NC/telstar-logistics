@@ -6,27 +6,26 @@ namespace TelstarRoutePlanner.Extensions.RoutePlanner
 {
     public class Route
     {
-        public int _time = 0;
-        public int _cost = 0;
-        public List<City> cities;
+        public double TotalTime = 0;
+
+        private List<City>? cities;
+
+        public Route() { }
+
         public Route(List<City> cities)
         {
             this.cities = cities;
         }
 
+        public Route(List<City> cities, double Time)
+        {
+            this.cities = cities;
+            TotalTime = Time;
+        }
+
         public List<City> GetCities()
         {
             return cities;
-        }
-
-        public void setTime(int time)
-        {
-            _time = time;
-        }
-
-        public int getTime()
-        {
-            return _time;
         }
 
         public void setCost(int cost)
