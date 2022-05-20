@@ -35,7 +35,7 @@ namespace TelstarRoutePlanner.Controllers.Service
             _cities = _context.GetCities().ToList();
         }
 
-        public List<Route> GetRoutes(string from, string to, ParcelType type)
+        public List<Route> GetRoutes(string from, string to)
         {
             City cityA = _cities.Where(city => city.Name == from).Single();
             City cityB = _cities.Where(city => city.Name == to).Single();
@@ -74,7 +74,7 @@ namespace TelstarRoutePlanner.Controllers.Service
 
         public Route GetRoute(string from, string to, ParcelType type)
         {
-            List<Route> routes = GetRoutes(from, to, type);
+            List<Route> routes = GetRoutes(from, to);
             Route route = routes.OrderBy(x => x.TotalTime).FirstOrDefault();
             return route;
         }
