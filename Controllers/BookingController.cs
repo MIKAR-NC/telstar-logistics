@@ -27,7 +27,8 @@ namespace TelstarRoutePlanner.Controllers
             return View();
         }
 
-        public IActionResult getRoutes(string from, string to, double weight, PackageTypeEnum type)
+        [HttpGet]
+        public IActionResult GetRoutes(string from, string to, double weight, PackageTypeEnum type)
         {
             if (weight > 40) return BadRequest();
 

@@ -1,0 +1,11 @@
+﻿@model List<TelstarRoutePlanner.ViewModels.RouteSearchViewModel>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@(item.from)</td>
+        <td>@(item.to)</td>
+        <td>@(item.time)</td>
+        <td>@(item.cost)</td>
+    </tr>
+}
