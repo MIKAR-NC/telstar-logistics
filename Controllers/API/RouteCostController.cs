@@ -19,7 +19,7 @@ namespace TelstarRoutePlanner.Controllers.API
         public string GetCost([FromBody] GetCostRequest getCostRequest)
         {
             Route route = service.GetRoute(getCostRequest.from, getCostRequest.to, getCostRequest.type);
-            return new GetCostResponse(route.getTime(), route.getCost(), 200).Serialize();
+            return new GetCostResponse(route.TotalTime, route.getCost(), 200).Serialize();
         }
     }
 }

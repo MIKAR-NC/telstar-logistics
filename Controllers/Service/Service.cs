@@ -75,7 +75,7 @@ namespace TelstarRoutePlanner.Controllers.Service
         public Route GetRoute(string from, string to, ParcelType type)
         {
             List<Route> routes = GetRoutes(from, to, type);
-            Route route = routes.OrderBy(x => x.getTime()).FirstOrDefault();
+            Route route = routes.OrderBy(x => x.TotalTime).FirstOrDefault();
             return route;
         }
     }

@@ -54,7 +54,6 @@ namespace TelstarRoutePlanner.Extensions.RouteFinder
             if (!SegmentExists("darfur", "wadai", CarrierType.Land, 32)) { _context.Add(new Segment(32, GetCityID("darfur"), GetCityID("wadai"), GetCarrierID(CarrierType.Land))); }
             if (!SegmentExists("darfur", "slavekysten", CarrierType.Land)) { _context.Add(new Segment(28, GetCityID("darfur"), GetCityID("slavekysten"), GetCarrierID(CarrierType.Land))); }
             if (!SegmentExists("darfur", "congo", CarrierType.Land)) { _context.Add(new Segment(24, GetCityID("darfur"), GetCityID("congo"), GetCarrierID(CarrierType.Land))); }
-            if (!SegmentExists("darfur", "bharel ghazal", CarrierType.Land)) { _context.Add(new Segment(8, GetCityID("darfur"), GetCityID("bharel ghazal"), GetCarrierID(CarrierType.Land))); }
             if (!SegmentExists("darfur", "kabalo", CarrierType.Air)) { _context.Add(new Segment(null, GetCityID("darfur"), GetCityID("kabalo"), GetCarrierID(CarrierType.Air))); }
 
             if (!SegmentExists("wadai", "slavekysten", CarrierType.Land)) { _context.Add(new Segment(28, GetCityID("wadai"), GetCityID("slavekysten"), GetCarrierID(CarrierType.Land))); }
@@ -84,9 +83,6 @@ namespace TelstarRoutePlanner.Extensions.RouteFinder
 
             if (!SegmentExists("slavekysten", "congo", CarrierType.Land)) { _context.Add(new Segment(20, GetCityID("slavekysten"), GetCityID("congo"), GetCarrierID(CarrierType.Land))); }
             if (!SegmentExists("slavekysten", "hvalbugten", CarrierType.Sea)) { _context.Add(new Segment(null, GetCityID("slavekysten"), GetCityID("hvalbugten"), GetCarrierID(CarrierType.Sea))); }
-
-            if (!SegmentExists("bahrel ghazal", "victoriasoeen", CarrierType.Land)) { _context.Add(new Segment(8, GetCityID("bahrel ghazal"), GetCityID("victoriasoeen"), GetCarrierID(CarrierType.Land))); }
-
 
             _context.SaveChanges();
 

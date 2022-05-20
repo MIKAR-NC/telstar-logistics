@@ -8,6 +8,8 @@ namespace TelstarRoutePlanner.Extensions.RoutePlanner
     {
         public double TotalTime = 0;
 
+        public double _cost = 0;
+
         private List<City>? cities;
 
         public Route() { }
@@ -33,7 +35,7 @@ namespace TelstarRoutePlanner.Extensions.RoutePlanner
             _cost = cost;
         }
 
-        public int getCost()
+        public double getCost()
         {
             return _cost;
         }
