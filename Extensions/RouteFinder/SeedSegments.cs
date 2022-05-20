@@ -60,7 +60,7 @@ namespace TelstarRoutePlanner.Extensions.RouteFinder
             if (!SegmentExists("darfur", "wadai", CarrierType.Land, 32)) { _context.Add(new Segment(32, GetCityID("darfur"), GetCityID("wadai"), GetCarrierID(CarrierType.Land))); }
             if (!SegmentExists("darfur", "slavekysten", CarrierType.Land)) { _context.Add(new Segment(28, GetCityID("darfur"), GetCityID("slavekysten"), GetCarrierID(CarrierType.Land))); }
             if (!SegmentExists("darfur", "congo", CarrierType.Land)) { _context.Add(new Segment(24, GetCityID("darfur"), GetCityID("congo"), GetCarrierID(CarrierType.Land))); }
-            if (!SegmentExists("darfur", "bharel ghazal", CarrierType.Land)) { _context.Add(new Segment(8, GetCityID("darfur"), GetCityID("bharel ghazal"), GetCarrierID(CarrierType.Land))); }
+            if (!SegmentExists("darfur", "bahrel ghazal", CarrierType.Land)) { _context.Add(new Segment(8, GetCityID("darfur"), GetCityID("bahrel ghazal"), GetCarrierID(CarrierType.Land))); }
             if (!SegmentExists("darfur", "kabalo", CarrierType.Air)) { _context.Add(new Segment(null, GetCityID("darfur"), GetCityID("kabalo"), GetCarrierID(CarrierType.Air))); }
 
             if (!SegmentExists("wadai", "slavekysten", CarrierType.Land)) { _context.Add(new Segment(28, GetCityID("wadai"), GetCityID("slavekysten"), GetCarrierID(CarrierType.Land))); }

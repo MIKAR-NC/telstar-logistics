@@ -33,6 +33,7 @@
     <tr>
       <th scope="col">From</th>
       <th scope="col">To</th>
+      <th scope="col">Route</th>
       <th scope="col">Time</th>
       <th scope="col">Cost</th>
     </tr>
@@ -70,6 +71,7 @@
 </div>
 
 </div>
+
 <script>
 
     function performSearch() {
@@ -115,9 +117,9 @@
 
     function getRoutes(from, to, shipmentType, weight) {
         const request = new XMLHttpRequest();
-        const url = `/api/1/routes/?from=${from}&to=${to}&type=${shipmentType}&weight=${weight}`;
+        const url = `/Booking/GetRoutes?from=${from}&to=${to}&type=${shipmentType}&weight=${weight}`;
         let response = {}
-
+        
         request.open("GET", url, false);
         request.setRequestHeader("Content-Type", "application/json");
         request.onreadystatechange = function () {
@@ -128,7 +130,8 @@
         };
         // return response;
         //TODO - REMOVE THE BELOW LINE WHEN THE ENDPOINT HAS BEEN IMPLEMENTED IN THE BACKEND
-        return [{ "from": from, "to": to, "time": "26", "cost": "500" }, { "from": from, "to": to, "time": "55", "cost": "300" }, { "from": from, "to": to, "time": "88", "cost": "200" }];
+        //return [{ "from": from, "to": to, "time": "26", "cost": "500" }, { "from": from, "to": to, "time": "55", "cost": "300" }, { "from": from, "to": to, "time": "88", "cost": "200" }];
+        return response;
     }
 
     function book(from, to, time, cost) {

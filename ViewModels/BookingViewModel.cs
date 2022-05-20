@@ -15,12 +15,24 @@ namespace TelstarRoutePlanner.ViewModels
         {
             CopyService<Booking, BookingViewModel>.Copy(item, this);
             routeCities = item.Route.Cities.Select(x => new RouteCityViewModel(x.City)).ToList();
+            GetCost();
         }
 
         public BookingViewModel(Route item)
         {
             CopyService<Route, BookingViewModel>.Copy(item, this);
             routeCities = item.GetCities().Select(x => new RouteCityViewModel(x)).ToList();
+            GetCost();
+        }
+
+        private void GetCost()
+        {
+            TotalCost = TotalTime * 3 / 4;
+        }
+
+        public static double RetCost(double time)
+        {
+            return time * 3 / 4;
         }
     }
 
