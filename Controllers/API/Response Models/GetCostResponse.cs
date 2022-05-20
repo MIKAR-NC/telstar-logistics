@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using Route = TelstarRoutePlanner.Extensions.RoutePlanner.Route;
 
 namespace TelstarRoutePlanner.Controllers.API.Response_Models
 {

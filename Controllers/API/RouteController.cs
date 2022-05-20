@@ -25,9 +25,9 @@ namespace TelstarRoutePlanner.Controllers.API
         [Route("api/routes")]
         public string GetRoutes([FromBody]GetRoutesRequest getRoutesRequest)
         {
-            var routes = this.service.GetRoutes(getRoutesRequest.from, getRoutesRequest.to, 0);
+            List<Route> routes = this.service.GetRoutes(getRoutesRequest.from, getRoutesRequest.to, 0);
 
-            return "";
+            return new GetRoutesResponse(routes).Serialize();
         }
 
     }
