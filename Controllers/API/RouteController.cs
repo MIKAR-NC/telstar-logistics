@@ -23,11 +23,11 @@ namespace TelstarRoutePlanner.Controllers.API
         }
 
         [Route("api/routes")]
-        public string GetRoutes([FromBody]GetRoutesRequest getRoutesRequest)
+        public IActionResult GetRoutes([FromBody]GetRoutesRequest getRoutesRequest)
         {
             List<Route> routes = this.service.GetRoutes(getRoutesRequest.from, getRoutesRequest.to);
 
-            return new GetRoutesResponse(routes).Serialize();
+            return Ok(new GetRoutesResponse(routes).Serialize());
         }
 
     }
