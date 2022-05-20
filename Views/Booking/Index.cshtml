@@ -33,6 +33,7 @@
             <tr>
                 <th id="fromhead" scope="col">From</th>
                 <th id="tohead" scope="col">To</th>
+                <th id="routehead" scope="col">Route</th>
                 <th id="timehead" scope="col">Time</th>
                 <th id="costhead" scope="col">Cost</th>
             </tr>
@@ -106,16 +107,23 @@
 
     function updateTable(results) {
         var tablebody = $('#resultBody');
-        tablebody.empty();
+        tablebody.children('tr').remove();
+        var tRows = "";
+        //tablebody.empty();
         for (var i = 0; i < results.length; i++) {
             // create an <tr> element, append it to the <tbody> and cache it as a variable:
-            var tr = $('<tr/>').appendTo(tablebody);
+            //var tr = $('<tr/>').appendTo(tablebody);
             var route = results[i];
-            tr.append('<td>' + route.from + '</td>');
-            tr.append('<td>' + route.to + '</td>');
-            tr.append('<td>' + route.time + '</td>');
-            tr.append('<td>' + route.cost + '</td>');
+
+            //tr.append('<td>' + route.from + '</td>');
+            //tr.append('<td>' + route.to + '</td>');
+            //tr.append('<td>' + route.routeSummary + '</td>')
+            //tr.append('<td>' + route.time + '</td>');
+            //tr.append('<td>' + route.cost + '</td>');
+
+            tRows += "<tr><td>" + route.from + "</td><td>" + route.to + "</td><td>" + route.routeSummary + "</td><td>" + route.time + "</td><td>" + route.cost + "</td></tr>";
         }
+        tablebody.html(tRows);
     }
 
 

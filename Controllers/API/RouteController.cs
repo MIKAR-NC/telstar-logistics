@@ -19,7 +19,7 @@ namespace TelstarRoutePlanner.Controllers.API
     [AllowAnonymous]
     public class RouteController : ControllerBase
     {
-        private Service.Service service { get; set; }
+        private Service.Service service;
         public RouteController(ApplicationDbContext context)
         {
             service = Service.Service.GetInstance(context);

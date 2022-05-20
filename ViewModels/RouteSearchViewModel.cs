@@ -7,8 +7,10 @@ namespace TelstarRoutePlanner.ViewModels
     {
         public string to { get; set; }
         public string from { get; set; }
-        public double cost { get; set; }
-        public double time { get; set; }
+        public string cost { get; set; }
+        public string time { get; set; }
+        public string routeSummary { get; set; }
+
         public PackageTypeEnum type { get; set; }
 
         public RouteSearchViewModel()
@@ -20,8 +22,9 @@ namespace TelstarRoutePlanner.ViewModels
         {
             from = route.GetCities().FirstOrDefault()?.Name ?? "";
             to = route.GetCities().LastOrDefault()?.Name ?? "";
-            cost = route.TotalTime * 3 / 4;
-            time = route.TotalTime;
+            routeSummary = String.Join(" > ", route.GetCities().Select(x => x.Name).ToArray());
+            cost = String.Format("${0}", (route.TotalTime * 3 / 4));
+            time = String.Format("{0}s", route.TotalTime);
         }
     }
 }
